@@ -1,0 +1,181 @@
+- everything in react can be modified 
+- let classname = "header"
+- classname = {classname};     - this will work
+
+------------
+component 
+
+import React from 'react'
+
+function App() {    //app lowercase can be used but not recomanded
+  return (
+    <div>Hello</div>
+  )
+}
+
+export default App
+
+- in funtion return : everything should be wraped in parent div , or react fragment <> </>
+
+- funtion video (){
+    return <div> video </div>
+}
+
+funtion thumb (){
+    return <div> thumb </div>
+}
+
+export {video , Thumb}   -- two component can be export in that manner , in form of objct now video and thumb is object
+but in that case import will also be cahnged by import {Video} from "component/video";  
+
+-------------------------------
+props : 
+
+function Video(props) { thid is the old way to use props 
+ <div className={bg}> this is intro to {props.title} </div>
+
+
+function Video({title}) { this is new by ( in the form of object value are passed )
+ <div className={bg}> this is intro to {title} </div>
+
+ default prop : 
+consider video name is the prop that should be passed to cpmponenet but it was not passed in shuch case a default prop can be used in that componenet as funtion video ({ video = " react js "}) now if prop is not passd then it will use as prop but if passed then passed valuie will bew used
+
+- props can be paaed by makeing object of props example
+
+let obj = {
+  title: 'React js tutorial',
+  views: '20k',
+  time: '1 year ago',
+  channel: 'Coder dost'
+};     // this a object of props 
+
+this is used as props by spread operator (spand object)
+
+<Video {...obj}>  </Video> now obj object of prop is used in the place of prop 
+
+------------------------------------------------------------------
+ 
+CONDITIONAL RENDRING & LIST  :
+
+rendering using ternnary operator while passing props 
+
+how to render object:
+
+let obj = {
+  title: 'react js tutorial',
+  views: '4k',
+  time: '1 year ago',
+  channel: 'coder dost',
+};
+
+return (
+  <div>  
+     <Video {...obj}> </Video>
+  </div>   
+)
+
+
+--------------------------------------
+
+RENDER LIST :
+
+to render list of video with having different props , first we have to make array of props of videos 
+
+
+    let videos = [{
+        id: 1,
+        title: 'react js tutorial',
+        views: '4k',
+        time: '4 year ago',
+        channel: 'coder dost',
+    },
+    {
+        id: 2,
+        title: 'node js tutorial',
+        views: '4k',
+        time: '11 year ago',
+        channel: 'coder dost',
+    },
+    {
+        id: 3,
+        title: 'next js tutorial',
+        views: '44k',
+        time: '1 year ago',
+        channel: 'coder dost',
+    }
+    ];
+
+    then we will render component with props iterating over the object 
+
+ <div>
+            <div>list rendering</div>
+            {
+                videos.map(video => <Video title={video.title}
+                    views={video.views}
+                    time={video.time}
+                    channel={video.channel}>
+                </Video>)
+            }
+        </div>
+
+
+---------------------------------------------------
+
+EVENTS 
+
+* CLICK]
+* MOUSE over
+* MOUSE OUT
+* KEY DOWN
+* KEY UP
+* KEY PRESS
+
+Event handler funtion 
+- buttton with onclick fution 
+    <button onClick={console.log('hello')}>play</button>
+-  this will not work , as you save the project it will automatically print hello in console and after clicking trhe button it will not work 
+
+-   <button onClick={() => console.log('hello')}>play</button>  in this we have make arrow function of consloe log , as we will click the play button function will call
+
+- there is another way to do this 
+
+  CLIDREN PROOP: if we write children inhte component prop then it will target inner text of the button that is paaed from parent component 
+
+  FUNTION PAASING THOUGH PROOP : a funtion can also be paased in proops 
+
+   <>
+      <PlayButton message="play" onClick = {()=> console.log('play_passed')}> play </PlayButton>
+      <PlayButton message="pause" onClick = {()=> alert('play_passed')}> pause </PlayButton>
+    </>
+  
+function PlayButton({message ,children,onClick}) {
+
+    function handleClick() {
+       onClick();
+    }
+    return (
+        <button onClick={handleClick}>{children}</button>
+    )
+}
+
+-----------------------------------------------------------------
+STATE IN REACT 
+
+ function handleClick() {
+      setNum(num + 1); 
+      setNum(num + 1); 
+      setNum(num + 1); 
+                              this will update only one value 
+    };
+  }
+
+ function handleClick() {
+      setNum(num => num + 1); 
+      setNum(num => num + 1); 
+      setNum(num => num + 1); 
+      this will update value three times it will hold the previous value
+    };
+  }
+
+--- 3:30 imp : addeing more items with state

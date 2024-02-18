@@ -1,0 +1,31 @@
+css commanly used:
+
+1 COLOR - color , background-color, border color, opacity
+2 TYPO - font-family, font-size, font-width, line-height, text-align, text-decoration
+3 LAYOUT - display, position,float,width, height,margin, padding
+4FLEXBOX - flex-direction, justify-content, align-items, flex-grow, flex-shink
+5 GRID - grid-template-column, grid-template-rows, grid-column, grid-row, grid-gap
+6 BOX-MODEL - border, border-radius, box-shadow, box-sizing
+7 RESPONSIVENESS - @media , max-width, min-width, viewport units (vw, vh)
+8 BACKGROUND - background-image, background-position, background-size, background-repeat
+
+---------------------------------------------------
+
+flow of project
+
+navbar
+home page
+list of items with conditional rendering
+list of items another categoury
+footer
+
+component with props 
+state ( black and white , like dislike )
+responsive desing
+
+------------------------------------------------
+
+color main #ececec (greyish white)
+#adbbc6 (cyan)
+#8a8fa3 (light purple)
+#374254 (dark purple)
